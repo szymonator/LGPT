@@ -4,6 +4,7 @@ import LGPT.Helpers
 import Control.Applicative
 import Text.Megaparsec
 import Text.Megaparsec.Char
+import Text.Megaparsec.Char.Lexer as L
 
 --------------------------------------------------------------------------------
 {- | Print an integer in longhand form. 
@@ -108,3 +109,5 @@ tens :: [String]
 tens = 
   [ "twenty", "thirty", "forty", "fifty"
   , "sixty", "seventy", "eighty", "ninety"]
+
+---------------------------------------------------------------------------------

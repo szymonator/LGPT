@@ -28,6 +28,7 @@ import Control.Exception
 
 -- Modules related to parsing and working with strings
 import Control.Monad ( forM_ )
+import Control.Monad.State
 import Control.Applicative (liftA2)
 import Data.Proxy
 import Text.Megaparsec (parse, errorBundlePretty, eof)
@@ -40,6 +41,7 @@ import Data.List.Split (splitOn)
 import LGPT.TUI qualified as TUI
 import LGPT.Numbers
 import qualified Data.Text as T
+import qualified Data.Map as Map
 import LGPT.Helpers (prompt)
 
 
@@ -109,7 +111,7 @@ main = do
 
 -- | Get the output of running λGPT with a given list of input lines.
 getλGPTResults :: [String] -> IO String
-getλGPTResults input = runWithInput TUI.runREPL $ unlines input
+getλGPTResults input = runWithInput (evalStateT TUI.runREPL Map.empty) $ unlines input
 
 
 -- | Check that λGPT gives back output matching a given regular expression, for a given input.

@@ -18,6 +18,12 @@ dependencies:
 - containers
 - mtl
 - time
+- filepath
+- directory
+- split
+- aeson
+- http-conduit
+- random
 
 default-extensions:
 - TypeSynonymInstances
